@@ -1,10 +1,12 @@
 import React, {Component, Fragment} from 'react'
 import './style.css'
+import FaireItem from './faireItem'
 
 class Faire extends Component {
     // 定义数据
     constructor(props) {
         super(props);
+        this.deleteItem = this.deleteItem.bind(this)
         this.state ={
             inputValue: '',
             list: ['代发短信', '代签收快递']
@@ -26,6 +28,7 @@ class Faire extends Component {
                     </p>
                 </div>
                 <ul>
+                    {/*
                     {
                         this.state.list.map((item, index)=>{
                             return (
@@ -39,6 +42,19 @@ class Faire extends Component {
                             )
                         })
                     }
+                    */}
+                    {
+                        this.state.list.map((item, index)=>{
+                            return (
+                                <FaireItem 
+                                    key={index}
+                                    content={item}
+                                    index={index}
+                                    deleteItem={this.deleteItem}
+                                />     
+                            )
+                        })
+                    }               
                 </ul>
             </Fragment>
         )
