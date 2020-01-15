@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 class faireItem extends Component {
     constructor (props) {
         super(props)
@@ -11,7 +12,7 @@ class faireItem extends Component {
                     key={this.props.index + this.props.content}
                     onClick={this.handleClick}
                 >
-                    {this.props.content}
+                    {this.props.name}:为您服务-{this.props.content}
                 </li>
             </div>
         );
@@ -20,5 +21,14 @@ class faireItem extends Component {
         this.props.deleteItem(this.props.index)
     }
 }
- 
+faireItem.propTypes = {
+    name: PropTypes.string.isRequired,
+    content: PropTypes.string,
+    index: PropTypes.number,
+    deleteItem: PropTypes.func
+}
+// 默认属性
+faireItem.defaultProps = {
+    name: '红红'
+}
 export default faireItem;

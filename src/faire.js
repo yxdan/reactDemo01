@@ -47,6 +47,7 @@ class Faire extends Component {
                         this.state.list.map((item, index)=>{
                             return (
                                 <FaireItem 
+                                    name='等等'
                                     key={index}
                                     content={item}
                                     index={index}
