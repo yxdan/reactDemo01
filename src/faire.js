@@ -22,12 +22,12 @@ class Faire extends Component {
                 <div>
                     {/*添加光标: 点击增加服务的时候，聚焦到input框内*/}
                     <label htmlFor="addService">服务名称: </label>
-                    <input id='addService' className="input" type="text" value={this.state.inputValue} onChange={this.inputChange.bind(this)}/>
+                    <input ref={(input)=> {this.input = input}} id='addService' className="input" type="text" value={this.state.inputValue} onChange={this.inputChange.bind(this)}/>
                     <p>
                         <button onClick={this.addList.bind(this)}>增加服务</button>
                     </p>
                 </div>
-                <ul>
+                <ul ref={(ul)=> {this.ul =ul}}>
                     {/*
                     {
                         this.state.list.map((item, index)=>{
@@ -63,7 +63,7 @@ class Faire extends Component {
     // 事件
     inputChange(e) {
         this.setState({
-            inputValue: e.target.value
+            inputValue: this.input.value
         })
     }
     // 增加
@@ -71,6 +71,8 @@ class Faire extends Component {
         this.setState({
             list: [...this.state.list, this.state.inputValue],
             inputValue: ''
+        }, ()=>{
+            console.log(this.ul.querySelectorAll('li').length)
         })
     }
     // 删除列表项
