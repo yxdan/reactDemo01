@@ -3,7 +3,8 @@ import './style.css'
 import FaireItem from './faireItem'
 
 class Faire extends Component {
-    // 定义数据
+    // init初始化阶段 --在某一时刻可以自动执行
+    // 定义数据 这个是es的构造方法 不算react的生命周期
     constructor(props) {
         super(props);
         this.deleteItem = this.deleteItem.bind(this)
@@ -12,7 +13,31 @@ class Faire extends Component {
             list: ['代发短信', '代签收快递']
         }
     }
+    // mount 挂载阶段
+    // componentWillMount和componentDidMount这两个生命周期函数，只在页面刷新时执行一次，
+    // 而render是states和props发生改变就会执行
+    componentWillMount () {
+        console.log('componentWillMount', '1.组件将要挂载之前')
+    }
+    componentDidMount () {
+        console.log('componentDidMount', '3.组件挂载完成')
+    }
+    // updation 组件发生改变的阶段 (states和props) 状态和属性发生改变
+    // shouldComponentUpdate: 函数在组件更新之前，自动执行。必须返回boolean值
+    shouldComponentUpdate () {
+        console.log('shouldComponentUpdate', '1-在组件更新之前')
+        // 返回true同意组件更新，返回false 反对组件更新
+        return true
+    }
+    componentWillUpdate () {
+        console.log('componentWillUpdate', '2-在组件更新之前， 但是在shouldComponentUpdate之后')
+    }
+    componentDidUpdate () {
+        console.log('componentDidUpdate', '4-组件更新之后执行')
+    }
     render() {
+        // 页面states或者props发生改变时
+        console.log('render', '2.或者3-开始挂载渲染')
         return (
             <Fragment>
                 {/*Fragment 碎片化 Flex 推荐使用这种注释方法*/}

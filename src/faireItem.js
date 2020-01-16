@@ -5,6 +5,15 @@ class faireItem extends Component {
         super(props)
         this.handleClick = this.handleClick.bind(this)
     }
+    // 子组件接收到父组件传递的参数，父组件render函数重新被执行，这个生命周期就会被执行。
+    // .组件第一次存在于dom中，函数是不会被执行
+    // .如果存在于dom中，函数才会被执行
+    componentWillReceiveProps () {
+        console.log('componentWillReceiveProps', 'child-组件将要接受属性')
+    }
+    componentWillUnmount () {
+        console.log('componentWillUnmount', 'child-组件去除时执行')
+    }
     render() { 
         return (  
             <div>
