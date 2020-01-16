@@ -1,3 +1,27 @@
 .input{
     border:3px solid #ae7000;
 }
+.boss-content-enter{
+    opacity: 0;
+}
+
+.boss-content-enter-active{
+    opacity: 1;
+    transition: opacity 2000ms;
+}
+
+.boss-content-enter-done{
+    opacity: 1;
+}
+
+.boss-content-exit{
+    opacity: 1;
+}
+
+.boss-content-exit-active{
+    opacity: 0;
+}
+
+.boss-content-exit-done{
+    opacity: 0;
+}
